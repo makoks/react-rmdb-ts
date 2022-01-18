@@ -17,7 +17,7 @@ import { useHomeFetch } from '../hooks/useHomeFetch';
 // Images
 import NoImage from '../images/no_image.jpg';
 
-const Home = () => {
+const Home: React.FC = () => {
     const { state, loading, error, searchTerm, setSearchTerm, setIsLoadingMore } = useHomeFetch();
 
     if (error) return <div>Something went wrong...</div>;
