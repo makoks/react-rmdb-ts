@@ -18,8 +18,8 @@ import { useMovieFetch } from '../hooks/useMovieFetch';
 // Images
 import NoImage from '../images/no_image.jpg';
 
-const Movie = () => {
-    const { movieId } = useParams();
+const Movie: React.FC = () => {
+    const { movieId = '' } = useParams();
     const { state: movie, loading, error } = useMovieFetch(movieId);
 
     if(loading) return <Spinner />;
@@ -37,7 +37,7 @@ const Movie = () => {
             <Grid header='Actors'>
                 {movie.actors.map(actor => (
                     <Actor
-                        key={actor.id}
+                        key={actor.credit_id}
                         imageUrl={actor.profile_path
                             ? `${IMAGE_BASE_URL}${POSTER_SIZE}${actor.profile_path}`
                             : NoImage

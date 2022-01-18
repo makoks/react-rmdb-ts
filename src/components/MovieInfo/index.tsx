@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 // Components
 import Thumb from '../Thumb';
@@ -13,7 +12,13 @@ import { IMAGE_BASE_URL, POSTER_SIZE } from '../../config';
 // Images
 import NoImage from '../../images/no_image.jpg';
 
-const MovieInfo = ({ movie }) => (
+// Types
+import { MovieState } from '../../hooks/useMovieFetch';
+type Props = {
+    movie: MovieState;
+}
+
+const MovieInfo: React.FC<Props> = ({ movie }) => (
     <Wrapper backdrop={movie.backdrop_path}>
         <Content>
             <Thumb
@@ -35,7 +40,7 @@ const MovieInfo = ({ movie }) => (
                     <div className='directors'>
                         <h3>DIRECTOR{movie.directors.length > 1 ? 'S' : ''}</h3>
                         {movie.directors.map(director => {
-                            return <p key={director.id}>{director.name}</p>
+                            return <p key={director.credit_id}>{director.name}</p>
                         })}
                     </div>
                 </div>
@@ -43,9 +48,5 @@ const MovieInfo = ({ movie }) => (
         </Content>
     </Wrapper>
 );
-
-MovieInfo.propTypes = {
-    movie: PropTypes.object
-};
 
 export default MovieInfo;
