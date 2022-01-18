@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 // Components
 import Header from './components/Header';
@@ -10,23 +10,15 @@ import NotFound from './components/NotFound';
 // Styles
 import { GlobalStyle } from './GlobalStyle';
 
-const App = () => (
+const App: React.FC = () => (
   <Router>
     <Header />
 
-    <Switch>
-      <Route path='/:movieId'>
-        <Movie />
-      </Route>
-
-      <Route path='/'>
-        <Home />
-      </Route>
-
-      <Route path='*'>
-        <NotFound />
-      </Route>
-    </Switch>
+    <Routes>
+      <Route path='/:movieId' element={<Movie />} />
+      <Route path='/' element={<Home />} />
+      <Route path='*' element={<NotFound />} />
+    </Routes>
 
     <GlobalStyle />
   </Router>
