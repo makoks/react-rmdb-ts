@@ -101,18 +101,18 @@ const apiSettings = {
       return sessionId;
     }
   },
-  // rateMovie: async (sessionId, movieId, value) => {
-  //   const endpoint = `${API_URL}movie/${movieId}/rating?api_key=${API_KEY}&session_id=${sessionId}`;
+  rateMovie: async (sessionId: string, movieId: number, value: number) => {
+    const endpoint = `${API_URL}movie/${movieId}/rating?api_key=${API_KEY}&session_id=${sessionId}`;
 
-  //   const rating = await (
-  //     await fetch(endpoint, {
-  //       ...defaultConfig,
-  //       body: JSON.stringify({ value })
-  //     })
-  //   ).json();
+    const rating = await (
+      await fetch(endpoint, {
+        ...defaultConfig,
+        body: JSON.stringify({ value })
+      })
+    ).json();
 
-  //   return rating;
-  // }
+    return rating;
+  }
 };
 
 export default apiSettings;
